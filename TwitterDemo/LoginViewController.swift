@@ -12,9 +12,12 @@ import BDBOAuth1Manager
 
 class LoginViewController: UIViewController {
 
+    @IBOutlet weak var logoImageView: UIImageView!
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        logoImageView.image = #imageLiteral(resourceName: "Twitter_Logo_Blue-1")
         
     }
 
