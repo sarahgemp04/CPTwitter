@@ -17,6 +17,7 @@ class Tweet: NSObject {
     var favorites: Int = 0
     var handle: String?
     var tweetID: String?
+    var tweetImageURL: URL?
     
     var isRetweeted: Bool
     var isFavorited: Bool
@@ -33,7 +34,14 @@ class Tweet: NSObject {
         } else {
             favorites = (dictionary["favorite_count"] as? Int) ?? 0
         }
-    
+        //If there is an image, populate the tweetImageURL with displayURL.
+        let entities = dictionary["entities"] as? NSDictionary
+        let media = entities!["media"] as? NSDictionary
+        if media != nil {
+            let displayURL = media!["display_url"] as! String
+            tweetImageURL = URL.init(string: displayURL)
+            print(tweetImageURL!)
+        }
         
         print(favorites)
         

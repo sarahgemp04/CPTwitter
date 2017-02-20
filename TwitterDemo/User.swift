@@ -15,6 +15,11 @@ class User: NSObject {
     var screenName: NSString?
     var profileURL: URL?
     var tagline: NSString?
+    var userID: String!
+    var banner: URL?
+    var location: String?
+    var followers: Int = 0
+    var following: Int = 0
     
     var dictionary: NSDictionary?
     
@@ -30,6 +35,17 @@ class User: NSObject {
         }
         
         self.tagline = dictionary["description"] as? NSString
+        self.userID = dictionary["id_str"] as! String
+        let banner = dictionary["profile_banner_url"] as? String
+        if let banner = banner {
+            let bannerURL = URL.init(string: banner )
+            self.banner = bannerURL
+             print(bannerURL!)
+        }
+       
+        self.location = dictionary["location"] as? String
+        self.followers = dictionary["followers_count"] as! Int
+        self.following = dictionary["friends_count"] as! Int
     }
     
     static var _currentUser: User?

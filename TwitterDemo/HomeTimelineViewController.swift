@@ -13,6 +13,7 @@ class HomeTimelineViewController: UIViewController, UITableViewDelegate, UITable
     var tweets: [Tweet]?
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var profTapRecognizer: UITapGestureRecognizer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,16 +32,18 @@ class HomeTimelineViewController: UIViewController, UITableViewDelegate, UITable
         }
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    //User tapped logout button
     @IBAction func onLogoutButton(_ sender: AnyObject) {
         TwitterClient.sharedInstance!.logout()
     }
     
+    //Set up each row of table view with tweet info.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "tweetCell") as! TableViewCell
@@ -51,6 +54,13 @@ class HomeTimelineViewController: UIViewController, UITableViewDelegate, UITable
         return cell
     }
     
+    
+    @IBAction func profImageTapped(_ sender: UIImageView) {
+        performSegue(withIdentifier: "ProfileSegue", sender: self)
+    }
+    
+    
+    //Determine number of tweets - set table View numRows equal to this.
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let tweets = tweets {
             return tweets.count
@@ -58,5 +68,19 @@ class HomeTimelineViewController: UIViewController, UITableViewDelegate, UITable
             return 0
         }
     }
+    
+    //Pass over tweet details to tweetDetails View Controller.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let cell = sender as? TableViewCell
+        
+        if let cell = cell {
+            let tweet = cell.tweet
+            let destination = segue.destination as! tweetsDetailsViewController
+            destination.tweet = tweet
+        }
+        
+    }
+    
+    
    
 }

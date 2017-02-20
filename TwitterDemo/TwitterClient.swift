@@ -46,6 +46,7 @@ class TwitterClient: BDBOAuth1SessionManager {
             
             self.currentAccount(success: { (user: User) in
                 User.currentUser = user
+                print(user.dictionary)
                 self.loginSuccess?()
                         
             }, failure: { (error: Error?) in
@@ -70,6 +71,20 @@ class TwitterClient: BDBOAuth1SessionManager {
             }, failure: { (task: URLSessionDataTask?, error: Error) in
                print("currentAccount failure: \(error.localizedDescription)")
                 failure(error)
+        })
+    }
+    
+    //For profile timeline, get the user's most recent tweets with their user id.
+    func getUserTweets(userID: String, success: @escaping ([Tweet])->(), failure: @escaping (Error?) -> ()) {
+        TwitterClient.sharedInstance!.get("1.1/statuses/user_timeline.json?user_id=\(userID)", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?
+            ) in
+            let tweetsResponseDict: [NSDictionary] = response as! [NSDictionary]
+            let tweets = Tweet.tweetsWithArray(dictionaries: tweetsResponseDict)
+            success(tweets)
+            
+            }, failure: { (task: URLSessionDataTask?, error: Error) in
+                print("error loading user's tweets: \(error.localizedDescription)")
+                
         })
     }
     
