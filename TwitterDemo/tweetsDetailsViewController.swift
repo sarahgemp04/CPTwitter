@@ -67,6 +67,7 @@ class tweetsDetailsViewController: UIViewController {
             retweetImageView.image = #imageLiteral(resourceName: "retweet-icon")
         }
         
+        replyImageView.image = #imageLiteral(resourceName: "reply-icon")
     }
     
     func refreshTweetStatus() {

@@ -12,6 +12,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     static var currUser: User?
     
+    @IBOutlet weak var locationImageView: UIImageView!
     @IBOutlet weak var handleLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var profImageView: UIImageView!
@@ -23,7 +24,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var tweets: [Tweet]?
     
-    @IBOutlet weak var locationImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -60,6 +61,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         if ProfileViewController.currUser!.banner != nil {
             coverImageView.setImageWith(ProfileViewController.currUser!.banner!)
         }
+        locationImageView.image = #imageLiteral(resourceName: "1487654234_location-24")
        
         loadUserTweets()
     }

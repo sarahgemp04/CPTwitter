@@ -228,7 +228,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fAo-4O-RXV">
                                 <subviews>
-                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8qF-X2-UML">
+                                    <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8qF-X2-UML">
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="80" id="XwP-Kg-1Bl"/>
@@ -584,7 +584,7 @@
                         <outlet property="followersLabel" destination="Wl2-PK-2S2" id="gzb-cj-W9y"/>
                         <outlet property="followingLabel" destination="5Ga-rU-pHB" id="L6u-WA-Oat"/>
                         <outlet property="handleLabel" destination="RnI-7z-t59" id="EDk-5S-mCk"/>
-                        <outlet property="locationImageView" destination="afU-il-1Rr" id="bGj-ot-Zy9"/>
+                        <outlet property="locationImageView" destination="afU-il-1Rr" id="f9j-gf-MBd"/>
                         <outlet property="locationLabel" destination="fkF-fx-Wys" id="S5A-Mz-s8V"/>
                         <outlet property="nameLabel" destination="Lei-ux-DH8" id="0q4-x5-ZNj"/>
                         <outlet property="profImageView" destination="ze6-Fv-2fk" id="laD-lk-d2N"/>
@@ -621,6 +621,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="bJr-HQ-Ilg"/>
+        <segue reference="r9X-Y9-dgf"/>
     </inferredMetricsTieBreakers>
 </document>
