@@ -12,12 +12,14 @@ import BDBOAuth1Manager
 
 class LoginViewController: UIViewController {
 
+    @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var logoImageView: UIImageView!
    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         logoImageView.image = #imageLiteral(resourceName: "Twitter_Logo_Blue-1")
+        loginButton.layer.cornerRadius = 10
         
     }
 

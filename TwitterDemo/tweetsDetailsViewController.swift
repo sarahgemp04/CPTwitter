@@ -88,7 +88,7 @@ class tweetsDetailsViewController: UIViewController {
         
     }
     @IBAction func profImageTapped(_ sender: AnyObject) {
-         ProfileViewController.currUser = tweet!.tweeter
+         ProfileViewController.currUser = User.currentUser
          performSegue(withIdentifier: "ProfileSegue", sender: self)
     }
     

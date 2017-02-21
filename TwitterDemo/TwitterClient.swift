@@ -97,7 +97,6 @@ print(currTweet.tweetID!)
                 let retweetResponseDict: NSDictionary = response as! NSDictionary
                 var newNumRetweets: Int = retweetResponseDict.value(forKeyPath: "retweet_count") as! Int
                 //Since post function response may not immediately show updated retweet count (as stated in API docs), increment numRetweets.
-                newNumRetweets = newNumRetweets + 1
                 success(newNumRetweets)
                 
                 }, failure: { (task: URLSessionDataTask?, error: Error) in

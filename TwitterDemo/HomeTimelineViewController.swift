@@ -21,7 +21,7 @@ class HomeTimelineViewController: UIViewController, UITableViewDelegate, UITable
         
         tableView.delegate = self
         tableView.dataSource = self
-        
+        ProfileViewController.currUser = User.currentUser!
         TwitterClient.homeTimeline(success: { (tweets: [Tweet]) in
             self.tweets = tweets
             self.tableView.reloadData()
@@ -56,9 +56,11 @@ class HomeTimelineViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     
-    @IBAction func profImageTapped(_ sender: UIImageView) {
+    @IBAction func profileIconTapped(_ sender: AnyObject) {
+        ProfileViewController.currUser = User.currentUser!
         performSegue(withIdentifier: "ProfileSegue", sender: self)
     }
+
     
     
     //Determine number of tweets - set table View numRows equal to this.
