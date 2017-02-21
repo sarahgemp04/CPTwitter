@@ -90,7 +90,7 @@ class TwitterClient: BDBOAuth1SessionManager {
     
     func retweet(currTweet: Tweet, success: @escaping (Int)->(),  failure: @escaping (Error?) -> ()) {
         
-            print(currTweet.tweetID!)
+print(currTweet.tweetID!)
            // let action: String = tweet.isRetweeted ? "unretweet" : "retweet"
             TwitterClient.sharedInstance!.post("1.1/statuses/retweet/\(currTweet.tweetID!).json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
                 
@@ -142,6 +142,23 @@ class TwitterClient: BDBOAuth1SessionManager {
                 
             }, failure: { (task: URLSessionDataTask?, error: Error) in
                 failure(error)
+        })
+    }
+    
+    func tweet(tweet: String, success: @escaping (Tweet) -> (), failure: @escaping (Error) -> ()) {
+        
+        var paramDict: [String: String] = [String: String]()
+        paramDict.updateValue(tweet, forKey: "status")
+        
+
+        TwitterClient.sharedInstance!.post(
+            "1.1/statuses/update.json", parameters: paramDict, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+                
+                let responseDict: NSDictionary = response as! NSDictionary
+                success(Tweet.init(dictionary: responseDict))
+                
+            }, failure: { (task: URLSessionDataTask?, error: Error) in
+                print(error.localizedDescription)
         })
     }
     

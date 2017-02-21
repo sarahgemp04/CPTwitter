@@ -12,6 +12,7 @@ class HomeTimelineViewController: UIViewController, UITableViewDelegate, UITable
 
     var tweets: [Tweet]?
     
+    @IBOutlet weak var composeButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var profTapRecognizer: UITapGestureRecognizer!
     
