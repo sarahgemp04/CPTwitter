@@ -85,7 +85,7 @@ The following **optional** features are implemented:
 
 ## Video Walkthrough 
 
-   Here's a walkthrough of implemented user stories:
+   Here's a walkthrough of implemented user stories: (Note that on Profile View Controller it says "Favorites" where it should say "Followers" I fixed this, just is not shown with gif)
 
    <img src='http://i.imgur.com/WkyhlvB.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
